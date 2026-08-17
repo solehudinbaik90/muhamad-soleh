@@ -1,7 +1,9 @@
 /* MSOLEH PORTOFOLIO | KOSTUM CE ES ES */
 
 
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 
 
