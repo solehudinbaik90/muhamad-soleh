@@ -20,8 +20,8 @@ export default function Hero() {
           <Image
             src="/assets/images/icon/icon-1.png"
             alt=""
-            width={80}
-            height={80}
+            width={10}
+            height={10}
             className="wobble-hor-bottom"
           />
         </span>
