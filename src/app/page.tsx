@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <section className="py-[30px] md:py-[80px]">
-      <div className="container mx-auto">
+      <div className="container">
         <div className="grid grid-cols-12 gap-[30px]">
           <Hero />
           <ProfileImage />
