@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, type KeyboardEvent } from "react";
 import type { NavLink } from "@/types";
 
 const NAV_LINKS: NavLink[] = [
@@ -53,84 +53,94 @@ export default function Header() {
   const closeMenu = () => setIsMenuOpen(false);
   const openMenu = () => setIsMenuOpen(true);
 
+  const handleKeyToggle = (action: () => void) => (e: KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      action();
+    }
+  };
+
   return (
-    <header className="relative z-[99]">
-      <div className="container mx-auto pt-[30px]">
-        <div className="flex justify-between rounded-[10px] bg-card px-[15px] py-[30px] md:px-[30px]">
+    <>
+      <header className="relative z-[99]">
+        <div className="container mx-auto pt-[30px]">
+          <div className="flex justify-between rounded-[10px] bg-card px-[15px] py-[30px] md:px-[30px]">
+            <div className="logo flex items-center">
+              <Link href="/">
+                <Image
+                  src="/assets/images/logo.svg"
+                  alt="MSoleh - Portofolio"
+                  width={120}
+                  height={40}
+                />
+              </Link>
+            </div>
 
-          <div className="logo flex items-center">
-            <Link href="/">
-              <Image
-                src="/assets/images/logo.svg"
-                alt="MSoleh - Portofolio"
-                width={120}
-                height={40}
-              />
-            </Link>
-          </div>
+            <menu className="hidden items-center lg:flex">
+              <ul className="flex gap-[40px]">
+                {NAV_LINKS.map(({ label, href }) => (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      className={pathname === href ? "navActive" : "navNotActive"}
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </menu>
 
-          <nav className="hidden items-center lg:flex" aria-label="Navigasi utama">
-            <ul className="flex gap-[40px]">
-              {NAV_LINKS.map(({ label, href }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className={pathname === href ? "navActive" : "navNotActive"}
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div className="block lg:hidden">
-            <div className="flex items-center gap-4 px-[10px]">
-              <button
-                onClick={openMenu}
-                aria-label="Buka menu navigasi"
-                className="rounded-full border border-[#919295] p-[10px] text-[25px] hover:bg-white/10 active:scale-90 transition-all"
-              >
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  strokeWidth="0"
-                  viewBox="0 0 24 24"
-                  className="text-white"
-                  height="1em"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
+            <div className="block lg:hidden">
+              <div className="flex items-center gap-4 px-[10px]">
+                <span
+                  onClick={openMenu}
+                  onKeyDown={handleKeyToggle(openMenu)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Buka menu navigasi"
+                  className="rounded-full border border-[#919295] p-[10px] text-[25px]"
                 >
-                  <path d="M4 6h16v2H4zm4 5h12v2H8zm5 5h7v2h-7z" />
-                </svg>
-              </button>
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    strokeWidth="0"
+                    viewBox="0 0 24 24"
+                    className="text-white"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path d="M4 6h16v2H4zm4 5h12v2H8zm5 5h7v2h-7z" />
+                  </svg>
+                </span>
+              </div>
             </div>
           </div>
-
         </div>
-      </div>
+      </header>
 
+      {/* Sibling dari <header>, bukan nested — menjaga z-[999] tetap efektif */}
       <div
-        className={`sidebar fixed inset-0 z-[999] bg-btn/60 transition-all duration-500 ${
-          isMenuOpen ? "visible opacity-100" : "invisible opacity-0"
-        }`}
+        className={`sidebar fixed ${
+          isMenuOpen ? "left-0" : "left-[100%]"
+        } top-0 z-[999] h-full w-full bg-btn/60 transition-all duration-500`}
         onClick={closeMenu}
         aria-hidden={!isMenuOpen}
       >
         <div
-          className={`ml-auto h-full min-h-[750px] w-[300px] bg-card px-[30px] pt-[60px] transition-transform duration-500 ${
-            isMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-
+          className="ml-auto h-full min-h-[750px] w-[300px] bg-card px-[30px] pt-[60px] md:min-h-[700px]"
           onClick={(e) => e.stopPropagation()}
           role="dialog"
           aria-label="Menu navigasi mobile"
         >
-
           <div className="relative flex justify-center">
-            <button
+            <span
               onClick={closeMenu}
+              onKeyDown={handleKeyToggle(closeMenu)}
+              role="button"
+              tabIndex={0}
               aria-label="Tutup menu navigasi"
               className="group absolute left-[-78px] rounded-lg bg-card px-[15px] py-[10px] text-[26px]"
             >
@@ -147,13 +157,8 @@ export default function Header() {
               >
                 <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
               </svg>
-            </button>
-            <Image
-              src="/assets/images/logo.svg"
-              alt="MSoleh"
-              width={100}
-              height={34}
-            />
+            </span>
+            <Image src="/assets/images/logo.svg" alt="MSoleh" width={100} height={34} />
           </div>
 
           <div className="my-[30px] border-t border-[#ddd]" />
@@ -180,13 +185,7 @@ export default function Header() {
             <p className="text-[20px] font-semibold text-white">Ikuti Saya:</p>
             <div className="mt-[20px] flex gap-3">
               {SOCIAL_LINKS.map(({ href, label, svgPath, viewBox }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                >
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
                   <button className="boxShadow rounded-lg bg-btn p-[10px] text-[18px] text-text shadow-none transition duration-300 hover:text-theme">
                     <svg
                       stroke="currentColor"
@@ -205,9 +204,8 @@ export default function Header() {
               ))}
             </div>
           </div>
-
         </div>
       </div>
-    </header>
+    </>
   );
 }
