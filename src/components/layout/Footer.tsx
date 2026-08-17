@@ -6,11 +6,10 @@ export default function Footer() {
       <div className="container mx-auto flex justify-center pb-[40px]">
         <div>
           <p className="text-center text-text">
-            Copyright{" "}
-            <span className="text-theme">MSoleh</span>{" "}
-            &copy; {new Date().getFullYear()}. All rights reserved.
+            Copyright <span className="text-theme">MSoleh</span> &copy;{" "}
+            {new Date().getFullYear()} . All rights reserved
           </p>
-          <div className="mt-[20px] flex justify-center">
+          <div className="mt-[20px] flex justify-center text-center">
             <Image
               src="/assets/images/logo.svg"
               alt="MSoleh - Portofolio"
