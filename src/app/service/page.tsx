@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 import SectionBadge from "@/components/ui/SectionBadge";
 import { services } from "@/data/services";
 import { testimonials } from "@/data/testimonials";
@@ -17,13 +15,8 @@ const serviceDelays = ["100", "150", "200", "100", "150", "200"];
 
 export default function ServicePage() {
   return (
-    <div className="min-h-screen bg-[#252525]">
-      <div className="bg-img" aria-hidden="true" />
-      <div className="relative z-10">
-        <Header />
-        <main>
         <section className="py-[30px] md:py-[80px]">
-          <div className="container mx-auto">
+          <div className="container">
 
             <SectionBadge
               label="Semua Layanan"
@@ -91,10 +84,6 @@ export default function ServicePage() {
 
           </div>
         </section>
-      </main>
-      <Footer />
-    </div>
-  </div>
     
   );
 }
