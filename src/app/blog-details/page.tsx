@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 import SectionBadge from "@/components/ui/SectionBadge";
 import PostCard from "@/components/blog/PostCard";
 import type { Comment } from "@/types";
@@ -38,13 +36,8 @@ const relatedPosts = posts.slice(0, 3);
 
 export default function BlogDetailsPage() {
   return (
-    <div className="min-h-screen bg-[#252525]">
-      <div className="bg-img" aria-hidden="true" />
-      <div className="relative z-10">
-        <Header />
-        <main>
         <section className="py-[30px] md:py-[80px]">
-          <div className="container mx-auto">
+          <div className="container">
 
             <SectionBadge
               label="Detail Artikel"
@@ -257,9 +250,5 @@ export default function BlogDetailsPage() {
             </div>
           </div>
         </section>
-      </main>
-      <Footer />
-    </div>
-  </div>
   );
 }
