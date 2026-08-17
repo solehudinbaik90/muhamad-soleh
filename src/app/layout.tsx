@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
-import localFont from "next/font/local";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import AosInit from "@/components/ui/AosInit";
-import "./global.css";
-import "./aos.css";
+import "./globals.css";
 import "swiper/css";
 import "swiper/css/pagination";
+import { Inter, Poppins } from "next/font/google";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,34 +21,32 @@ const poppins = Poppins({
   display: "swap",
 });
 
-const swiperIcons = localFont({
-  src: "../../public/assets/css/swiper2/swiper-icon.woff",
-  variable: "--font-swiper-icons",
-  weight: "400",
-  style: "normal",
-  display: "block",
-});
-
 export const metadata: Metadata = {
   title: {
-    template: "%s | MSoleh - Portofolio",
-    default: "MSoleh - Portofolio",
+    default: "Muhamad Soleh",
+    template: "%s | Muhamad Soleh",
   },
-  description:
-    "Menampilkan Profil, CV, Resume, dan Proyek dari Muhamad Soleh — Guru IPA/Fisika berpengalaman.",
-  icons: { icon: "/favicon.ico" },
+  description: "Menampilkan Profil, CV, Resume, dan Proyek dari Muhamad Soleh.",
 };
 
-interface RootLayoutProps {
-  children: React.ReactNode;
-}
-
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id" className={`${inter.variable} ${poppins.variable} ${swiperIcons.variable}`}>
-      <body>
-        {children}
+    <html lang="id">
+      <body className={`${inter.variable} ${poppins.variable} antialiased`}>
+
         <AosInit />
+
+        <div>
+          <div className="bg-img" aria-hidden="true" />
+
+          <Header />
+
+          <section className="relative z-[99]">
+            <div className="main__body">{children}</div>
+          </section>
+
+          <Footer />
+        </div>
       </body>
     </html>
   );
