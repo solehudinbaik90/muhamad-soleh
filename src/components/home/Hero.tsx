@@ -1,13 +1,13 @@
 import Link from "next/link";
-import Image from "next/image";
 import Stats from "./Stats";
 import Cards from "./Cards";
+import Image from "next/image";
 
 export default function Hero() {
   return (
     <div className="order-2 col-span-12 mt-[40px] py-[40px] md:mt-0 md:pr-[60px] lg:order-1 lg:col-span-8">
       <p className="text-[22px]" data-aos="fade-up" data-aos-delay="50">
-        <span className="text-theme">Hai!</span> Perkenalkan saya
+        <span className="text-theme">Hi!</span> Saya di sini
       </p>
 
       <h2
@@ -15,21 +15,24 @@ export default function Hero() {
         data-aos="fade-up"
         data-aos-delay="100"
       >
-        MUHAMAD SOLEH!
+        Saya MSoleh!
         <span className="absolute bottom-[15px] right-[-100px]">
           <Image
             src="/assets/images/icon/icon-1.png"
-            alt=""
-            width={10}
-            height={10}
+            alt="dekorasi"
             className="wobble-hor-bottom"
           />
         </span>
       </h2>
 
-      <h2 className="text-[52px] font-semibold leading-tight md:text-[62px]" data-aos="fade-up" data-aos-delay="150">
+      <h2
+        className="text-[52px] font-semibold leading-tight md:text-[62px]"
+        data-aos="fade-up"
+        data-aos-delay="150"
+      >
         PENGAJAR <span className="text-theme">FISIKA!</span>
       </h2>
+
       <br />
 
       <p className="text-text" data-aos="fade-up" data-aos-delay="200">
@@ -41,9 +44,14 @@ export default function Hero() {
       </p>
 
       <div className="mt-[50px]" data-aos="fade-up" data-aos-delay="250">
-        <Link className="btn" href="https://wa.me/62887433130861">
-          Hubungi Saya
-        </Link>
+        <a
+          href="https://wa.me/62887433130861"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn"
+        >
+          Rekrut Saya!
+        </a>
       </div>
 
       <Stats />
