@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AosInit from "@/components/ui/AosInit";
-import "./globals.css";
+import "./global.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Inter, Poppins } from "next/font/google";
