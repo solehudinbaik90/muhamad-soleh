@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 import SectionBadge from "@/components/ui/SectionBadge";
 import ContactForm from "@/components/contact/ContactForm";
 
@@ -11,13 +9,8 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-[#252525]">
-      <div className="bg-img" aria-hidden="true" />
-      <div className="relative z-10">
-        <Header />
-        <main>
         <section className="py-[30px] md:py-[80px]">
-          <div className="container mx-auto">
+          <div className="container">
 
             <SectionBadge
               label="Kontak"
@@ -83,9 +76,5 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
-      </main>
-      <Footer />
-    </div>
-    </div>
   );
 }
