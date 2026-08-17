@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 import SectionBadge from "@/components/ui/SectionBadge";
 import { projects } from "@/data/projects";
 
@@ -15,13 +13,8 @@ const delays = ["200", "250", "300", "200", "250", "300"];
 
 export default function PortfolioPage() {
   return (
-    <div className="min-h-screen bg-[#252525]">
-      <div className="bg-img" aria-hidden="true" />
-      <div className="relative z-10">
-        <Header />
-        <main>
           <section className="py-[30px] md:py-[80px]">
-            <div className="container mx-auto">
+            <div className="container">
 
               <SectionBadge
                 label="Proyek"
@@ -95,9 +88,5 @@ export default function PortfolioPage() {
 
             </div>
           </section>
-        </main>
-        <Footer />
-      </div>
-    </div>
   );
 }
