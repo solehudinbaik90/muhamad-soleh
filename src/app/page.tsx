@@ -3,7 +3,7 @@ import Hero from "@/components/home/Hero";
 import ProfileImage from "@/components/home/ProfileImage";
 
 export const metadata: Metadata = {
-  title: "Beranda",
+  title: "Beranda | Muhamad Soleh",
   description: "Menampilkan Profil, CV, Resume, dan Proyek dari Muhamad Soleh.",
 };
 
