@@ -74,8 +74,8 @@ export default function AboutPage() {
                   </div>
                   <div className="mt-[20px] grid grid-cols-12">
                     <div className="col-span-6" data-aos="fade-up" data-aos-delay="250">
-                      <p className="text-[18px] font-medium">Email</p>
-                      <p className="mt-2 text-[16px] text-text">solehudinz369</p>
+                      <p className="text-[18px] font-medium">Usia</p>
+                      <p className="mt-2 text-[16px] text-text">27 Tahun</p>
                     </div>
                     <div className="col-span-6" data-aos="fade-up" data-aos-delay="250">
                       <p className="text-[18px] font-medium">Lokasi</p>
