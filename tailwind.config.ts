@@ -1,12 +1,10 @@
 import type { Config } from "tailwindcss";
-import withMT from "@material-tailwind/react/utils/withMT";
 
 const config: Config = {
   content: [
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  important: true,
   theme: {
     screens: {
       sm: "380px",
@@ -27,9 +25,6 @@ const config: Config = {
       },
     },
     extend: {
-      backgroundImage: {
-        'bg-img': "url('/assets/media/black-bg.png')", 
-      },
       colors: {
         theme: "rgb(255 1 79)",
         card: "rgb(29 28 34)",
@@ -46,5 +41,4 @@ const config: Config = {
   plugins: [],
 };
 
-
-export default withMT(config);
+export default config;
