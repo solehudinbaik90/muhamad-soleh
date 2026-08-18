@@ -57,7 +57,7 @@ export default function ContactForm() {
           className="inputBox"
           type="url"
           name="website"
-          placeholder="Link Website (opsional)"
+          placeholder="Judul Pesan"
           disabled={isLoading}
           aria-label="Link Website"
         />
