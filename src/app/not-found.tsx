@@ -7,8 +7,7 @@ export default function NotFound() {
   return (
   <section className="py-[30px] md:py-[80px]">
       <div className="container">
-        <div className="grid grid-cols-12 gap-[30px]">
-        <main className="flex min-h-screen flex-col items-center justify-center gap-6 text-center">
+        <div className="mt-[20px] flex justify-center text-center">
         <h1 className="text-[80px] font-bold text-theme">404</h1>
         <h2 className="text-[28px] font-semibold text-white">
         Halaman tidak ditemukan
@@ -19,7 +18,6 @@ export default function NotFound() {
         <Link href="/" className="btn">
         Kembali ke Beranda
         </Link>
-        </main>
         </div>
       </div>
     </section>
